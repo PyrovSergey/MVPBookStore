@@ -9,15 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.pyrov.mvpbookstore.Presenter.Contract;
-import com.example.pyrov.mvpbookstore.Presenter.Presenter;
+import com.example.pyrov.mvpbookstore.Presenter.MainContract;
+import com.example.pyrov.mvpbookstore.Presenter.MainPresenter;
 import com.example.pyrov.mvpbookstore.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements Adapter.ViewAdapter, Contract.ViewContract {
+public class MainActivity extends AppCompatActivity implements MainAdapter.ViewAdapter, MainContract.ViewContract {
 
     @BindView(R.id.recycler)
     RecyclerView recycler;
@@ -25,19 +25,25 @@ public class MainActivity extends AppCompatActivity implements Adapter.ViewAdapt
     FloatingActionButton buttonAdd;
     @BindView(R.id.text_instruction)
     TextView textInstruction;
-    private Contract.PresenterContract presenter;
-    public static final String DETAIL = "detail";
+    private MainContract.PresenterContract presenter;
+    private RecyclerAdapter adapter;
+    private static final String DETAIL = "detail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter = new Presenter(this);
+        presenter = new MainPresenter(this);
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recycler.setLayoutManager(manager);
-        RecyclerAdapter adapter = new RecyclerAdapter(this, presenter.getBookList());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter = new RecyclerAdapter(this, presenter.getBookList());
         recycler.setAdapter(adapter);
     }
 

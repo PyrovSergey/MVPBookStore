@@ -1,7 +1,5 @@
 package com.example.pyrov.mvpbookstore.View;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,9 +18,9 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private List<Book> bookList;
-    private Adapter.ViewAdapter view;
+    private MainAdapter.ViewAdapter view;
 
-    public RecyclerAdapter(Adapter.ViewAdapter view, List<Book> bookList) {
+    public RecyclerAdapter(MainAdapter.ViewAdapter view, List<Book> bookList) {
         this.bookList = bookList;
         this.view = view;
     }
@@ -48,10 +46,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         holder.imageButtonSettingDetail.setOnClickListener(v -> {
             view.buttonSettingDetailClick(book.getId());
-            Context context = v.getContext();
-//            Intent intent = new Intent(context, DetailedActivity.class);
-//            intent.putExtra(DETAIL, book);
-//            context.startActivity(intent);
         });
 
         holder.imageButtonButtonSale.setOnClickListener(v -> {
@@ -63,8 +57,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             book.setQuantity(currentQuantity);
             holder.textViewTotalLeft.setText(String.valueOf(currentQuantity));
             view.updateDataBook(book.getId(), book.getBookName(), book.getPrice(), currentQuantity, book.getSupplierName(), book.getSupplierPhone());
-            //Data.updateData(book.getId(), book.getBookName(), book.getPrice(), currentQuantity, book.getSupplierName(), book.getSupplierPhone());
-            //Data.getBooksData();
             notifyItemChanged(position);
         });
     }

@@ -4,7 +4,7 @@ import com.example.pyrov.mvpbookstore.Model.Book;
 
 import java.util.List;
 
-public interface Contract {
+public interface MainContract {
     interface PresenterContract {
         void updateDataBook(long id, String bookName, String bookPrice, int quantity, String supplierName, String supplierPhoneNumber);
 

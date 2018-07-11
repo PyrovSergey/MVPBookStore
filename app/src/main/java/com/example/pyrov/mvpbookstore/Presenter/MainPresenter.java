@@ -6,11 +6,11 @@ import com.example.pyrov.mvpbookstore.Model.Data;
 
 import java.util.List;
 
-public class Presenter implements Contract.PresenterContract {
-    private Contract.ViewContract view;
+public class MainPresenter implements MainContract.PresenterContract {
+    private MainContract.ViewContract view;
     private ContractData data;
 
-    public Presenter(Contract.ViewContract view) {
+    public MainPresenter(MainContract.ViewContract view) {
         this.view = view;
         data = Data.getDataInstance();
     }

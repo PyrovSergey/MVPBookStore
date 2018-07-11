@@ -34,7 +34,7 @@ public final class Data implements ContractData {
 
     @Override
     public List<Book> getBooksData() {
-
+        books.clear();
         mBookDbHelper = new BookDbHelper(App.getAppContext());
 
         SQLiteDatabase database = mBookDbHelper.getReadableDatabase();
