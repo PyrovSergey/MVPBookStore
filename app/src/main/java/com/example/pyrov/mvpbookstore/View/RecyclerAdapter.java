@@ -19,12 +19,12 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    public static final String DETAIL = "detail";
     private List<Book> bookList;
-    private Context context;
+    private Adapter.ViewAdapter view;
 
-    public RecyclerAdapter(List<Book> bookList) {
+    public RecyclerAdapter(Adapter.ViewAdapter view, List<Book> bookList) {
         this.bookList = bookList;
+        this.view = view;
     }
 
     @NonNull
@@ -41,23 +41,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.textViewBookTitle.setText(book.getBookName());
         holder.textViewTotalLeft.setText(String.valueOf(book.getQuantity()));
         holder.textViewBookPrice.setText(book.getPrice());
+
         if (holder.textViewTotalLeft.getText().toString().equals("0")) {
             holder.imageButtonButtonSale.setVisibility(View.INVISIBLE);
         }
+
         holder.imageButtonSettingDetail.setOnClickListener(v -> {
+            view.buttonSettingDetailClick(book.getId());
             Context context = v.getContext();
-            Intent intent = new Intent(context, DetailedActivity.class);
-            intent.putExtra(DETAIL, book);
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, DetailedActivity.class);
+//            intent.putExtra(DETAIL, book);
+//            context.startActivity(intent);
         });
+
         holder.imageButtonButtonSale.setOnClickListener(v -> {
             int currentQuantity = book.getQuantity();
             currentQuantity--;
             if (currentQuantity < 0) {
                 currentQuantity = 0;
-                holder.imageButtonButtonSale.setVisibility(View.INVISIBLE);
             }
-
+            book.setQuantity(currentQuantity);
+            holder.textViewTotalLeft.setText(String.valueOf(currentQuantity));
+            view.updateDataBook(book.getId(), book.getBookName(), book.getPrice(), currentQuantity, book.getSupplierName(), book.getSupplierPhone());
             //Data.updateData(book.getId(), book.getBookName(), book.getPrice(), currentQuantity, book.getSupplierName(), book.getSupplierPhone());
             //Data.getBooksData();
             notifyItemChanged(position);
@@ -66,7 +71,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return bookList.size();
+        int size = bookList.size();
+        view.visibilityTextInstruction(size == 0);
+        return size;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

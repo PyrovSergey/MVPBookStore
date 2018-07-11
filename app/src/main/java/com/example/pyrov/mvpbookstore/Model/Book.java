@@ -20,6 +20,10 @@ public class Book implements Parcelable {
         this.supplierPhone = supplierPhone;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public int getId() {
         return id;
     }
