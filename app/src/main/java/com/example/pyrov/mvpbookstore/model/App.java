@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.Model;
+package com.example.pyrov.mvpbookstore.model;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,6 +1,6 @@
-package com.example.pyrov.mvpbookstore.Presenter;
+package com.example.pyrov.mvpbookstore.presenter;
 
-import com.example.pyrov.mvpbookstore.Model.Book;
+import com.example.pyrov.mvpbookstore.model.Book;
 
 import java.util.List;
 
@@ -14,6 +14,6 @@ public interface MainContract {
     }
 
     interface ViewContract {
-
+        void isShowTextInstruction(Boolean isShow);
     }
 }

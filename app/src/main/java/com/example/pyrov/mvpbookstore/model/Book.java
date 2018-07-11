@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.Model;
+package com.example.pyrov.mvpbookstore.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

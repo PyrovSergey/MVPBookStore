@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.pyrov.mvpbookstore.Model.Book;
+import com.example.pyrov.mvpbookstore.model.Book;
 import com.example.pyrov.mvpbookstore.R;
 import com.squareup.picasso.Picasso;
 
@@ -63,9 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        int size = bookList.size();
-        view.visibilityTextInstruction(size == 0);
-        return size;
+        return bookList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

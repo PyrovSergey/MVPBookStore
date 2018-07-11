@@ -1,13 +1,13 @@
-package com.example.pyrov.mvpbookstore.Presenter;
+package com.example.pyrov.mvpbookstore.presenter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.example.pyrov.mvpbookstore.Model.App;
-import com.example.pyrov.mvpbookstore.Model.ContractData;
-import com.example.pyrov.mvpbookstore.Model.Data;
+import com.example.pyrov.mvpbookstore.model.App;
+import com.example.pyrov.mvpbookstore.model.ContractData;
+import com.example.pyrov.mvpbookstore.model.Data;
 import com.example.pyrov.mvpbookstore.R;
 
 public class DetailedPresenter implements DetailedContract.DetailedPresenter {

@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.pyrov.mvpbookstore.Presenter.MainContract;
-import com.example.pyrov.mvpbookstore.Presenter.MainPresenter;
+import com.example.pyrov.mvpbookstore.presenter.MainContract;
+import com.example.pyrov.mvpbookstore.presenter.MainPresenter;
 import com.example.pyrov.mvpbookstore.R;
 
 import butterknife.BindView;
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.ViewA
     }
 
     @Override
-    public void visibilityTextInstruction(Boolean visibility) {
-        if (visibility) {
+    public void isShowTextInstruction(Boolean isShow) {
+        if (isShow) {
             textInstruction.setVisibility(View.VISIBLE);
         } else {
             textInstruction.setVisibility(View.INVISIBLE);

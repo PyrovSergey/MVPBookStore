@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.pyrov.mvpbookstore.Model.Book;
-import com.example.pyrov.mvpbookstore.Presenter.DetailedContract;
-import com.example.pyrov.mvpbookstore.Presenter.DetailedPresenter;
+import com.example.pyrov.mvpbookstore.model.Book;
+import com.example.pyrov.mvpbookstore.presenter.DetailedContract;
+import com.example.pyrov.mvpbookstore.presenter.DetailedPresenter;
 import com.example.pyrov.mvpbookstore.R;
 
 import butterknife.BindView;

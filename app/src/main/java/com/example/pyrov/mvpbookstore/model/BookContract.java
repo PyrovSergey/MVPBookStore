@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.Model;
+package com.example.pyrov.mvpbookstore.model;
 
 import android.provider.BaseColumns;
 

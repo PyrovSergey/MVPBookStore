@@ -1,10 +1,10 @@
-package com.example.pyrov.mvpbookstore.Model;
+package com.example.pyrov.mvpbookstore.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.pyrov.mvpbookstore.Model.BookContract.BookEntry;
+import com.example.pyrov.mvpbookstore.model.BookContract.BookEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,6 @@ public final class Data implements ContractData {
     private Data() {
         if (books == null) {
             books = new ArrayList<>();
-        } else {
-            books.clear();
         }
     }
 

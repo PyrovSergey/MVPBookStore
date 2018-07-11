@@ -1,8 +1,8 @@
-package com.example.pyrov.mvpbookstore.Presenter;
+package com.example.pyrov.mvpbookstore.presenter;
 
-import com.example.pyrov.mvpbookstore.Model.Book;
-import com.example.pyrov.mvpbookstore.Model.ContractData;
-import com.example.pyrov.mvpbookstore.Model.Data;
+import com.example.pyrov.mvpbookstore.model.Book;
+import com.example.pyrov.mvpbookstore.model.ContractData;
+import com.example.pyrov.mvpbookstore.model.Data;
 
 import java.util.List;
 
@@ -22,7 +22,9 @@ public class MainPresenter implements MainContract.PresenterContract {
 
     @Override
     public List<Book> getBookList() {
-        return data.getBooksData();
+        List<Book> list = data.getBooksData();
+        view.isShowTextInstruction(list.isEmpty());
+        return list;
     }
 
     @Override

@@ -1,10 +1,10 @@
-package com.example.pyrov.mvpbookstore.Model;
+package com.example.pyrov.mvpbookstore.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.pyrov.mvpbookstore.Model.BookContract.BookEntry;
+import com.example.pyrov.mvpbookstore.model.BookContract.BookEntry;
 
 
 public class BookDbHelper extends SQLiteOpenHelper {

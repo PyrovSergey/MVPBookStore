@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.Presenter;
+package com.example.pyrov.mvpbookstore.presenter;
 
 public interface DetailedContract {
     interface DetailedView {
