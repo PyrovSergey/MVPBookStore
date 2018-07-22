@@ -17,7 +17,6 @@ public final class Data implements ContractData {
 
     private static List<Book> books;
 
-    @Inject
     public Data() {
         if (books == null) {
             books = new ArrayList<>();

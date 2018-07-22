@@ -12,7 +12,6 @@ public class MainPresenter implements MainContract.PresenterContract {
     private MainContract.ViewContract view;
     private ContractData data;
 
-    @Inject
     public MainPresenter() {
         data = App.getComponent().getData();
     }

@@ -16,7 +16,6 @@ public class DetailedPresenter implements DetailedContract.DetailedPresenter {
     private DetailedContract.DetailedView detailedView;
     private ContractData data;
 
-    @Inject
     public DetailedPresenter() {
         data = App.getComponent().getData();
     }
