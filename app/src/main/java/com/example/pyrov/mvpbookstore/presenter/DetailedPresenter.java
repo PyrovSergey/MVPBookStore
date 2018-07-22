@@ -5,19 +5,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import com.example.pyrov.mvpbookstore.R;
 import com.example.pyrov.mvpbookstore.model.App;
 import com.example.pyrov.mvpbookstore.model.ContractData;
-import com.example.pyrov.mvpbookstore.model.Data;
-import com.example.pyrov.mvpbookstore.R;
+
+import javax.inject.Inject;
 
 public class DetailedPresenter implements DetailedContract.DetailedPresenter {
 
     private DetailedContract.DetailedView detailedView;
     private ContractData data;
 
-    public DetailedPresenter(DetailedContract.DetailedView detailedView) {
-        this.detailedView = detailedView;
-        data = Data.getDataInstance();
+    @Inject
+    public DetailedPresenter() {
+        data = App.getComponent().getData();
     }
 
     @Override
@@ -91,5 +92,15 @@ public class DetailedPresenter implements DetailedContract.DetailedPresenter {
     @Override
     public void deleteBook(int id) {
         data.deleteBook(id);
+    }
+
+    @Override
+    public void onAttach(DetailedContract.DetailedView detailedView) {
+        this.detailedView = detailedView;
+    }
+
+    @Override
+    public void onDetach() {
+        detailedView = null;
     }
 }

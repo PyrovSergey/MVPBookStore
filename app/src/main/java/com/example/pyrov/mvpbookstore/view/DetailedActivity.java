@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.View;
+package com.example.pyrov.mvpbookstore.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,10 +12,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.pyrov.mvpbookstore.R;
+import com.example.pyrov.mvpbookstore.model.App;
 import com.example.pyrov.mvpbookstore.model.Book;
 import com.example.pyrov.mvpbookstore.presenter.DetailedContract;
-import com.example.pyrov.mvpbookstore.presenter.DetailedPresenter;
-import com.example.pyrov.mvpbookstore.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +56,8 @@ public class DetailedActivity extends AppCompatActivity implements DetailedContr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
         ButterKnife.bind(this);
-        detailedPresenter = new DetailedPresenter(this);
+        detailedPresenter = App.getComponent().getDetailedPresenter();
+        detailedPresenter.onAttach(this);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -122,6 +123,7 @@ public class DetailedActivity extends AppCompatActivity implements DetailedContr
                     public void onClick(DialogInterface dialog, int i) {
                         dialog.cancel();
                         detailedPresenter.deleteBook(getIdBook());
+                        detailedPresenter.onDetach();
                         finish();
                     }
                 })
@@ -181,6 +183,7 @@ public class DetailedActivity extends AppCompatActivity implements DetailedContr
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         dialog.cancel();
+                        detailedPresenter.onDetach();
                         finish();
                     }
                 }).setNegativeButton(R.string.cancel,
@@ -218,6 +221,7 @@ public class DetailedActivity extends AppCompatActivity implements DetailedContr
 
     @Override
     public void closeDetailView() {
+        detailedPresenter.onDetach();
         finish();
     }
 }

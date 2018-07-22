@@ -9,25 +9,19 @@ import com.example.pyrov.mvpbookstore.model.BookContract.BookEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public final class Data implements ContractData {
 
     private static BookDbHelper mBookDbHelper;
 
-    private static Data data;
-
     private static List<Book> books;
 
-    private Data() {
+    @Inject
+    public Data() {
         if (books == null) {
             books = new ArrayList<>();
         }
-    }
-
-    public static Data getDataInstance() {
-        if (data == null) {
-            data = new Data();
-        }
-        return data;
     }
 
     @Override

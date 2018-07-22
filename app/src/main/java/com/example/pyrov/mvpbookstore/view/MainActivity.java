@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.View;
+package com.example.pyrov.mvpbookstore.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.pyrov.mvpbookstore.presenter.MainContract;
-import com.example.pyrov.mvpbookstore.presenter.MainPresenter;
 import com.example.pyrov.mvpbookstore.R;
+import com.example.pyrov.mvpbookstore.model.App;
+import com.example.pyrov.mvpbookstore.presenter.MainContract;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.ViewA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter = new MainPresenter(this);
+        presenter = App.getComponent().getMainPresenter();
+        presenter.onAttach(this);
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recycler.setLayoutManager(manager);

@@ -1,18 +1,20 @@
 package com.example.pyrov.mvpbookstore.presenter;
 
+import com.example.pyrov.mvpbookstore.model.App;
 import com.example.pyrov.mvpbookstore.model.Book;
 import com.example.pyrov.mvpbookstore.model.ContractData;
-import com.example.pyrov.mvpbookstore.model.Data;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class MainPresenter implements MainContract.PresenterContract {
     private MainContract.ViewContract view;
     private ContractData data;
 
-    public MainPresenter(MainContract.ViewContract view) {
-        this.view = view;
-        data = Data.getDataInstance();
+    @Inject
+    public MainPresenter() {
+        data = App.getComponent().getData();
     }
 
     @Override
@@ -30,5 +32,15 @@ public class MainPresenter implements MainContract.PresenterContract {
     @Override
     public Book getChoiceBook(int id) {
         return data.getBook(id);
+    }
+
+    @Override
+    public void onAttach(MainContract.ViewContract view) {
+        this.view = view;
+    }
+
+    @Override
+    public void onDetach() {
+        view = null;
     }
 }

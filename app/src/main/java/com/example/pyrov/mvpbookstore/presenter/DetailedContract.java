@@ -43,5 +43,9 @@ public interface DetailedContract {
         void detachView();
 
         void deleteBook(int id);
+
+        void onAttach(DetailedContract.DetailedView detailedView);
+
+        void onDetach();
     }
 }

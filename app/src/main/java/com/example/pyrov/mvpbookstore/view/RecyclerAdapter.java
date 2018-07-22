@@ -1,4 +1,4 @@
-package com.example.pyrov.mvpbookstore.View;
+package com.example.pyrov.mvpbookstore.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
