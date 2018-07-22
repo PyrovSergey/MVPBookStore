@@ -74,4 +74,10 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.ViewA
             textInstruction.setVisibility(View.INVISIBLE);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDetach();
+    }
 }
